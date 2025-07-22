@@ -1,0 +1,388 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <style>
+        /* --- CSS Reset & Base Styles --- */
+        :root {
+            --primary-color: #003366; /* Azul oscuro corporativo */
+            --secondary-color: #005A9C;
+            --accent-color: #FF6600; /* Naranja para botones y acentos */
+            --light-gray: #f4f4f4;
+            --dark-gray: #333333;
+            --white: #ffffff;
+            --border-radius: 8px;
+            --shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.7;
+            color: var(--dark-gray);
+            background-color: #eef2f5;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px 0;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Oswald', sans-serif;
+            font-weight: 500;
+            color: var(--primary-color);
+        }
+
+        h1 { font-size: 2.5rem; }
+        h2 { font-size: 2rem; margin-bottom: 20px; }
+        h3 { font-size: 1.5rem; margin-bottom: 15px; }
+        h4 { font-size: 1.2rem; margin-bottom: 10px; }
+
+        a {
+            color: var(--secondary-color);
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .card {
+            background-color: var(--white);
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        /* --- Header --- */
+        .main-header {
+            background-color: var(--white);
+            padding: 15px 0;
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+        .search-form {
+            display: flex;
+        }
+        .search-form input[type="text"] {
+            border: 1px solid #ccc;
+            padding: 10px;
+            border-radius: var(--border-radius) 0 0 var(--border-radius);
+            min-width: 250px;
+        }
+        .search-form input[type="submit"] {
+            background-color: var(--accent-color);
+            color: var(--white);
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+            border-radius: 0 var(--border-radius) var(--border-radius) 0;
+        }
+
+        /* --- Breadcrumbs --- */
+        .breadcrumbs {
+            padding: 15px 0;
+            font-size: 0.9rem;
+        }
+        .breadcrumbs a {
+            font-weight: bold;
+        }
+
+        /* --- Main Layout --- */
+        .main-layout {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        main {
+            flex: 1;
+        }
+
+        aside {
+            width: 100%;
+        }
+
+        /* --- Product Section --- */
+        .product-title h1 {
+            color: var(--dark-gray);
+            margin-bottom: 20px;
+            line-height: 1.3;
+        }
+        .product-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+        .product-images {
+            flex: 1;
+            text-align: center;
+        }
+        .main-image img {
+            border: 1px solid #ddd;
+            border-radius: var(--border-radius);
+            margin-bottom: 10px;
+        }
+        .image-caption {
+            font-style: italic;
+            font-size: 0.9rem;
+            color: #666;
+        }
+        .product-info {
+            flex: 1;
+        }
+        .price-box {
+            background-color: #FFFBEA;
+            border: 2px dashed var(--accent-color);
+            border-radius: var(--border-radius);
+            padding: 20px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .price-box .price-label {
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+        .price-box .price-amount {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--accent-color);
+            margin: 5px 0;
+        }
+        .price-box .price-note {
+            font-size: 1rem;
+        }
+        .buy-button {
+            display: block;
+            width: 100%;
+            background-color: var(--accent-color);
+            color: var(--white);
+            text-align: center;
+            padding: 15px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            border-radius: var(--border-radius);
+            margin-bottom: 20px;
+            transition: background-color 0.3s;
+        }
+        .buy-button:hover {
+            background-color: #e65c00;
+            text-decoration: none;
+        }
+        .download-link {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 10px 15px;
+            border: 1px solid var(--secondary-color);
+            border-radius: var(--border-radius);
+        }
+
+        /* --- Specs Table --- */
+        .specs-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .specs-table th, .specs-table td {
+            padding: 12px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+        .specs-table th {
+            background-color: var(--light-gray);
+            font-weight: bold;
+            width: 40%;
+        }
+        .specs-table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        /* --- Aside/Sidebar --- */
+        .sidebar-widget ul {
+            list-style: none;
+        }
+        .sidebar-widget ul li a {
+            display: block;
+            padding: 10px;
+            border-bottom: 1px solid #eee;
+            transition: background-color 0.2s;
+        }
+        .sidebar-widget ul li a:hover {
+            background-color: #e8f4ff;
+            text-decoration: none;
+        }
+        
+        /* --- Footer --- */
+        .main-footer {
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 30px 0;
+            margin-top: 30px;
+            text-align: center;
+        }
+
+        /* --- Media Queries for Responsiveness --- */
+        @media (min-width: 768px) {
+            .main-layout {
+                flex-direction: row;
+            }
+            main {
+                flex: 3; /* Main content takes 3/4 of space */
+            }
+            aside {
+                flex: 1; /* Sidebar takes 1/4 of space */
+            }
+            .product-grid {
+                flex-direction: row;
+            }
+        }
+
+        @media (max-width: 767px) {
+            .header-content {
+                justify-content: center;
+            }
+            .logo {
+                width: 100%;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="main-header">
+        <div class="container header-content">
+            <a href="#" class="logo">DS3 Comunicaciones</a>
+            <form name="form1" method="get" action="http://www.ds3comunicaciones.com/find.html" class="search-form">
+                <input type="hidden" name="cx" value="partner-pub-9265252540298851:f2549i3fi60">
+                <input type="hidden" name="cof" value="FORID:10">
+                <input type="hidden" name="ie" value="UTF-8">
+                <input name="q" type="text" placeholder="Buscar en el sitio...">
+                <input name="sa" type="submit" value="Buscar">
+            </form>
+        </div>
+    </header>
+
+    <div class="container">
+        <nav class="breadcrumbs">
+            <a href="http://www.ds3comunicaciones.com/AMP/index.html">AMP</a> &gt;
+            <a href="http://www.ds3comunicaciones.com/AMP/index.html#cablecat6">Cable de red Cat 6</a> &gt;
+            <span>6-1427200-4</span>
+        </nav>
+
+        <div class="main-layout">
+            <aside>
+                <div class="card sidebar-widget">
+                    <h4>Categorías AMP</h4>
+                    <ul>
+                        <li><a href="#">Cable de Red Cat 5e</a></li>
+                        <li><a href="#">Cable de Red Cat 6</a></li>
+                        <li><a href="#">Cable de Red Cat 6A</a></li>
+                        <li><a href="#">Patch Panel</a></li>
+                        <li><a href="#">Jacks RJ45</a></li>
+                        <li><a href="#">Faceplates</a></li>
+                        <li><a href="#">Patch Cords</a></li>
+                    </ul>
+                </div>
+                 <div class="card sidebar-widget">
+                    <h4>Otras Marcas</h4>
+                    <ul>
+                        <li><a href="#">Mikrotik</a></li>
+                        <li><a href="#">D-Link</a></li>
+                        <li><a href="#">Panduit</a></li>
+                        <li><a href="#">TP-Link</a></li>
+                    </ul>
+                </div>
+            </aside>
+
+            <main>
+                <div class="card product-title">
+                    <h1>Cable UTP AMP Categoría 6 Chaqueta CMR 23AWG 6-1427200-4</h1>
+                </div>
+
+                <div class="card product-grid">
+                    <div class="product-images">
+                        <div class="main-image">
+                            <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBxISEhUTEhMVFRUVFhgZFxcXFhoYFRUVGBUXFxkYGBUYHSggGB4lGxgYITEhJSkrLy4uFx8zODMtNygtLisBCgoKDg0OGhAQGi0lHx8tLS0tLS0wLS0rLS0tLS0tLS0tLS0tLS0tLS0tKy0tLS0tLS0tLS0tLS0tLS0tLS0tLf/AABEIAJoBSAMBIgACEQEDEQH/xAAbAAEAAgMBAQAAAAAAAAAAAAAABQYBBAcDAv/EAEQQAAEDAgQDBQYEAgcHBQAAAAEAAgMEEQUSITEGQVETYXGBkQcUIjJSoSNCcrEzwUNTYoKSsvAVFzU2c6LRZHSDwuH/xAAYAQEBAQEBAAAAAAAAAAAAAAAAAQIDBP/EACkRAQEAAgEDAgUFAQEAAAAAAAABAhExAxIhQVEEIjJhcRNCkbHRgRT/2gAMAwEAAhEDEQA/AOflxWO1XXKzhqB/zRN/ujL+yhazgWE/K57PQi/2Xqx69jffK58JQsiQKzVfAkw/hvY4d92n9rKGrOG6qPeJ3iPiHqF2x+Jnqz241qg3S68JIXtPxNI8QvgSFdp1sbynansP4lrYNIqmZoFrDMXNAGgGV1xbu2U/Re1DEmD4nxy9S+MB3/ZlH2VEEy9Gzp2dLL0Syx1Oj9sMv9LSNPeyQj/tc039VdeF+NqesDv6FzLXbI5o3vaxvrsfsuAU0zSRcgAXJv3C6smHUMD2XhqJYZHEmznB0ZcRfoCPAry/EYdLDxGpMtb079FUMd8rmu8CD+y9brmOB4DNA4PlxOEstexZld5Fzx+yksVwJtZY+8GW2zoqh7XDX6Q4t6eq8njaXa+XS64/PwViMJLqKqqgRyfMCD6OAPmFMQVvEEUbe0hhmtzaW9qf1fEG+gWuz2p6bdIul1yafjjEYnAyUk4vf4TC7Uf4VaOHeLJpx8dLO02PzQvaOY+bY6g+izcbF7fG1xuioGM8TYow/gUtM8A/1ji4jvY7Jb77qMp/avJEctbRPjOlzGfU5X2/zeasxt4NOpoq3RccUEoBZO25F8pBDufI+C36bH6d5sJBfv0U1ZyaSqL4Y8HUEEdyyCoj6RYBWUBERAREQEREBERAREQEREBERAREQEREEfJhbStObBOinEQVSbBT0WpJhbhyV2Xw6MHkrsUGfDL/ADNB8QD9iomq4Wp3/NC3yuP2XUHUjDyWvJhjSrtHHavgKA/IXsPiHD0IUPV8Ayj+HI13cQWn+a7fLgo5LSlwQ9FZ1LF3XEKLh2ohkDpoC9gHxAWcCOnwm6ma3hEhueEujDhcsdra4vbfTzXT3YORyWtJQuameVz5amVnCicPY4Wj3WrIsbhktgcvQEH+a+sQFZSO7RoEkW4kaNLXvu3VislfgsUv8SMHvGh9QvCjwYwi0Mz2D6XgPZttyP3K5XG+jeHUmP3bmFY/7xG1sVUBIfyggSX6Wlb8XrbvWKiTEmu+CpY7+w+JrL93y6+RVG4mpHNOaWnETif4sRvE79QtoT0IW5g3GtTA0NlyzMGmpu4jTS++3W/gpli7dLPH9sn4q3UfGk0TgyqhLSdMzDofAG4PqrVDizJAMj2m/K+vod1W6LiHDqpoEkbPiFrOAuO4OFvtqpF/DtFKy0JLDyLXF3q15Nx/q6zvL08rnelfqlx/CXMhOjmgjvAP7r4koKdxu+CNx72Aj02Vcnw2sp9Y3dq0fTfN5sOp8iVik4zEbhHUtLTfdwIPnzHmFZ1POrNJn8Ne3uwvdG9ivCOHT/NTNY76orxOva1/gsD4EEdyhf8AdjBmzR1dRHroPgJHnYX5q7UssMozMcFsRwNOxB8Cu0zvu8s3ENR4G6KPIKp79LXeALjxZY+arlbwM4vMkMtTC83u6KdxBub/AJnB2u9leZqQ8l5NpnhSWw7lApXY7RnK0Pq4xa2cAut4udmJt381vD2ndm7s6ulfTyD6rkHwBAPpfxV3u8BatQ/OMr2hzejgHD0Pit909YbQ9F7Q6R5ALg2/Mki/kQFZosQjc3MHjLa9+5V08J4c/wCajiH6W5R6NIH+j1K3KXBaSEWijMf6Xu0t0BJAWLr0Xw928W0F8vvcF9rdoNwpSnqmSC7HteOrSHC/iFVcS4Xpag/iMY8/U5tnf4m2Vdf7NZYpO1oagQu/U4320va9v/CsmNTTqV0XM66ox2l3y1bB+aJoz2tzYAHd2gdfRalN7Sahp/GglGtiOzNxqBsWgq/p3W4adYRV/BuKYKhmZp1A+XZ17XAsba2t6qKq/aVSQydnPHUwkHd8Pw+IyuJI8AVmY28Gl1RQ2DcT0dVpBPG82By3s+xF/kNnfZS4KlmuUfSLF1lAREQEREBERAREQEREBERAREQYIXm+nadwvVEGhLhjSoyrwkjZWJYIV2KVUUuha5oLTuCAQfEHQqqYzwbFJd0B7F/0/wBGfLdvl6Lq1RQtdyUTU4QeSJY4jWYBU05vIw5OcjDmaP1G2nmFasBwybK2WlrGg2GaKYENJJ1s5pt0tYc9Ve20bmla1ZhUT2kZGgnnbQ33zN2Pjus2R2nWy1qvuWrqWt2jbINSTmMbtdWhwsWE9SFFVfGEbfw8Ro7Nd+bK2aIi+/xeXXwUZNTVdMb00t26/gyfHGRbXI4m46W05r2w7iCnnzQVkfu8h3BN4neosDz19VIzM5L5i34THQyx5qXIGnnHpY9Czlz0IWjX8Na5o3uY76ojlN+9l+fUKuu4HqaeQy0VQ0AkEMIc0b7XBII8Rbu6SFFxaWSdjVsMMgG97sdyuB07wSPBS4y8u+Fyxvd07t6tx+qpTaYiZn1ahw8eY8wVZsI4ghqAMrrO+knXy6rzZPDOAHZJARpfW48VpS8JUZB7NronHm1ziAf0OJFu5SSzi7ay6nS6n149t95/izr4MLTyVNkoq2nA7N5maBpbQj+4T+xPgvmDjMxm07SLb3BBHla/2T9T3mmb8JbO7Cy/3/C6dg3ovKWjBXhhmMRTtDo3A371uCZvUeq3t5rLGn7hZfTqZwGi3Q5ZVRDva8Fe8UrhupGyxlHRBHTStIIcxpB3uN1oVVBBM3I4aHSxs5vo66m5KZpXj7gEHP6r2WxOk7SKodCL3sxvrbWw5+Gi+qqDGqL+HJ79H1ue2aNd2Od8R7xmJ6BX19KeS1HxvBXSZ0vlQaf2nvheG1cb47/W0g+hAP2V8w/iWCWLtWOzC1/gBeT4NGpK2Y5TzF/HVecoi5xt8QAD13Go1Kzlq3hWlFxxhznFvvcYI3D7stbkS8AX7lO09Sx7czHNc082kEeoVZxTAKap/ixxyd722eP/AJG6qpf7v6ymk7TDpuzH0ukNttibfF5rXbjZyjrF0uuZzcU4tRHLWUvbMt/GhFxtcuOUW8btaFO4JxlFUhvZTQucd43EskvppZwGY3NtNCl6dk2Lgi1KOoe4kPiLLWsS5pDrjllJI81hcxuIiICIiAiIgIiICIiAiIgIiIPN8IPJRdZREbKYWCEFUlg5EaKJxfhZlSNDkcNjqbeB3HhsrzNRtK1vciEPTSg4bUV+HjJUM7SBgtmYczWjXUHdnmLeG5sHvVJWsyuDXg/leMr2nu5g94KnZBpYjx6WVRxXhYZjLSkMd/V6Bh30b9Pht4KsfNhdzhry8ESsdno6nKdSGS3tfkC9o233BPip/DJKpsdqqINc387XBzCBzJ3HmFW6DiWancGVDXN2uHg6Drc6jfe5Cu9JiTZG5mm4WXe9S5zd8oeTiCKN4ZI4xE/KXgBjh1a8EtPqpmN7JWjMGSNO2zgtKsw2KVhaGtsd2OF2Hntu094VPxTAqmhd21GZMo3j1ew9bdR3OCnn1bxxwy4uqvEeC0jTdsLGH+wMlz35SL+a0sTwGOTk1/6rNkHg8b+ajeG+NIKoFshEUgNrHRpO2/5TfSx7t1YnwOGo18EuMqd3U6eW1YkwuqgBMM0n6X6jp8wu37L6w7jdzH9nVMsfq2/nY/ZWWJ72r0mp4ZLGWKN5G2ZjXW8LhZmGuK7f+nHOa6mMv34r1o8Vhk+SRpPS9neh1W4HA7FViv4bp3nNGTC4bZPkv+nYeVlHSYbXRH8N/aAbFrrHza4/zKXLKcxJ0eln9Oer7X/V6usqk4fxVNG4MqoJW6fPkcW6cy62nmrDLjsTW5viLeZa2+X9QGo9Frujhl0ssbpKrBCiaXiOlk+WdmvInKfR1lKNerLLwzlhlj9U0GMdFrzUQK2brKrKM9wIX2YHBSKIIntHg81oYjwjRVdzNTszHd7bsf5uZa/mrGWDoshqstnA08Iw5lPE2GPNkYLNzOLiB0zHVFuooCIiAiIgIiICIiAiIgIiICIiAiIgIiIPCeAOUZNA5pU0sOaDugr9VRQ1DeznjD299wR4OFiPIqLpuEpKZ2almJj0/Cl5d7ZBqNOVvNWx9IOS+CC1KS6V2or3Rn8SN2mrrWJaL75eY7238FKYXiTJBeN7XjuOo8RuPNetQI5NHjUbEbjwKq2M8NuB7WF2R7dQ9gPTdwGrfEeanCZb5ix43hNPVsySt53Dho9p7neGltj3qpSR4jQEkEz07dnDVzR/aZ8wt5jnovvDOLSH9lVjI7k8DR2trm2/iB5cxaopToQbgi4I1BB3seaunTp9fXj09qjMG41p5iGOIDjy/wD3a/mrMGtcLi1jzUBiPDVFVXdLCA8/nYSx9+9zbX817U+BmKPJFPK8a/O+zgOQa9gBHndThcuy+Z4SE1EeS8mROB5quVNfiNObsHvLObHtDZgP7tg7xF/BSGEcbU0xySZoJdAWSjKbkcieXjZJltb0cpNzz+E4JiBqFrVBjduLH6ho715+B0UlYELVnob7K1y4V2uwGOXUsY89fkf6tNie/RV+akr6I3gEro7/ACtGa1+4Zgd97K8GicFsRZm7rHZHqw+Lzxmr5ntUBhvF9mj3mKSNx6xuaHeTrH0up2lxqGQXa77f+Nl8VjmSNLJGNe07hwuFX5uG4jrC90Z6O+Ju/X5h62S9048rL0OpzvG/zFyjlB1BB8F9XVADMRpiHNj7dnMMcHG3dexPhZWiixjMy7o5GuOzHNyOPcA+wKsu449Tpdl8WWfZL3WVBu4mp2uyvL43dHsI+40UrTVLHjMxzXDq0gj7K7jOXTyxm7HuiwFlVgRFhzgBc6AbnkEGUXPKj2sU7pHso6WrrRGbPkp4i6MHx5jfW1jbS4Vg4N40pcSY51O5wcw2kjeMsjCeovqN9R0QWNFUuO+PIML7ISRySumzZWR2zANtckE7aqT4R4iixClZVRAta/MMrrZmlri0g28L+BCCaRc+xT2oMiq5qOOhq6iSE/F2DA/SzfisNQPiAueq9MI9qEElSylqKaqo5JbCP3iPIHk3AGuoudAdr6IL6irWM8YR09dTULo3ufUi7Xi2Vti4fFc3/LyVlQEVAxr2nMgrZaJlFVVEsVi7sGB9wWMdfKDewzgXsvbC/aDJNNHEcKxGIPeGmSSAtjZc2zOPIBBeUWFWuDeMYsRdUNjjez3aTs3ZrfEbuFxY7fD90FmRViv4ziixOHDTG8yTszteLZALSGx1vf8ADPqFEY/7STSPla/Da50cRIMwi/BIH5g86Ze9TYvyKgYD7SzVviEeG14jmc1omMV4QC62cvGmUcz3LW/3stdNNDDh9bO6CRzHmGMSAEOc0E5dgcptfoqOkIqdwf7RKavmfT9nLT1DLkxTNyuIFr213F9QbFXFAWHNusogj6mj5hasbnNKml5viB5IK9jPDdNWt/EblfyezRwP7HzUM2nq8NaST71ANwLtcznmI1yjU3IuOZ7ro6ntsvJ1QW7ozljv8o/CsZgnF2nKdLg8ieV1tzhzVW8Y4Zu4zUR7OS9yy9mO/Tyab8joe7da2E8Vujk7CqaWu2+LTXbyvy5FN2Jjl51eVnM4do8X/ceB3CheIODoqwXEhZIPleRdw7rtIvr1urK2Fkgu0rIpiNlPDrjlljfCkUQxPDW3lDamnYBfISXMba5cGkA2Hn5bqy4PxZTVDQ5r7X5Hcem/kpB1QWqt41wtT1Bzx/gTXvmYBlcRtmZsfEWKfh1meGf1z/sXFrwdRqvqy55FTYtSOzNa2pjvqGOAdbTUNcBr3XKs3+3nBt3QSZubLAPtzyg6O8im/di9Pz8t2lpqUOWk/DyNlp4dxjRynKJMjtssgyG/S50v3XU+Hqs5Y3HmI2NrmrM1QCMr2gjoVIleE1IHIyjKjD2StAs1wH5X6+jtx9194NgrICXNBbfS2bMLac/Efdb9PS5Vs2U7Zvbf6mfb278ARFlVgVS9q9U+LCatzCQezy3G4D3Na77Eq2rTxfDo6mGSCUXZKwscOdnC2h5HmpeFisex+jjjwml7MAZ2F7jzc9zjcnr08AFYKDBKWKaSeKGJs0hPaSNaM7ibEgu3F7AkddVznBcMx7CI3UtLBDXU4LjC8yNidHmJJDmvcL3cSbC/PXVb/CPCdfSNra6dwmrqlji2GN+WIPtdoJcQ29w0X/KG6E3Vt9WYiaGaLEeIp5ZHN7ChiMLQ5wDS85mO0O+rpf8ACOgXz7E6r3WqrsLc4OEbzJEb3u0ENdqNNQYzp1K9+BvZFTmmz4rTl1U+R7nDtnDK2+gvDJlN9XX/ALXcsVns8koMUo6rCqc9gPhqG9sPhBOVx/Gfmddrr2F9WJPHhahaXEKuDiLEXUdJ71IWWcztWxZWfgnNmdvqALd6xxVilRNiWHPximNBBE8ujc0iUOkzMdZ8rTZrbtZyuNeRuJeTB8YpMYrK6loW1Ec4yNLp4mDL+Gb2Lwd2W1C+eIuH8Zxp8ENZTRUVNE/O9wlZK5xtbQNcTe1wNhre/JJ6F9W3xz/zFhP6T+8i6suYe0PAcQdiVFWUNKJxTRkEGWOMZszvh+N4Ox3AUhR4/j7pGCTCYmMLmh7veoiWtJGZ1g/WwubJOBSp5a5vE9ccPZA+bsm3E5cGdn2dPcjK4G98v3XQMAqcfNQwVkNC2n17QxGTtAMptlzSEfNbltdVbEMGxemxuqxCkoW1EcrGsbmniYCOzhubF4cLGMjUKwYfj2POljbLhMTIy9okeKqJxYwuAc4ND7mwubdyTiFX1cn9hYtLig/9V/8AaRdYXKhw5iuF1tTPh0MVXBVvzuidI2N7H3c7d7gLAuOxNwdgp6l4ePEn/NlB/wC2P+WrVx9qn/Caz/on9wq9wtwtiE+J/wC1MTbFC5jCyGBjg8sHxNGZzSRs53M3zctla+P8OlqcOqYIW55JIy1jbhtzcc3EAeZUs+VZy0fZL/wij/6Z/wA7lzDgHi1mH1+K56eqn7WpNvd4hJlyyz/PdwtfNp4Fda9nmGS02HU0E7MksbCHNu11jmcd2kg6EbFV32X8M1dJV4nLURZGVEwdEc7HZ2iSd17McS3R7d7brX7qzPpQnClLUYjjjsT92lpqeOPKO1bkfIchYNOZ1N7XAAAuuwhERRERAREQFr1FOHLYRBCvhcwryrsNgq2ZKiNrtCA7Z7b/AEvGrVOuYDutd9KNwhpA4ZhE9GCGS9tENg8fiho5XGj+fTZbcHEceYNlBjubNcdY3Hpm/Kb8iOi33Slu60cQoI5gbAXduDs7T7O71Na4W3cSr2NcPHYrTkoDyVMZVz4c42vJBf4mu0MfiemvzAWNtuavGF4nHUMD43XH3B6FVyxz3dXl5tzNXlUvbIMrxfXTkQe48lKkArUmogdkdIruI8OQS3L4WSX/ADCzJtv6wWJ9emirmKzVOF2dTukfBcl0cuvZ66Bp0u3fodNyr26nc1escx56qajtj1rOfMRHDfG1NV2bfJJbVjuvPK7n+6srZQeY9VVsb4ZpKlp+ARScpIwA4HX5gNHDxUPGayhaGzQ+9RD+lhLhI0X/ADN+Y/fvKLcMM/OPi+zol1lVHA+K4p3tZA8vJ0LH/C9vU3tY+G+ytjVXLLG43VfSIiMiIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIg8Z4Q7xUZNC5hUyvl7Ad0ERKxkzckg8+Y9VTHYLW4dMZaVpmgOuVu4HMOYN/EfbY399HzC+o5LaFGcsJk1sExmKpZmjOotmafmae8dO9SapuPYG+OQ1dELP3fE3Z5JuXNAtqdyOe+++9gPEzJfhcbO/1/PRKxOpq9uXP9rJZfDoQeS+muuvpHVoy0fRfEMTgVIog024dEJO17NnaWtnyjNbxW2FlEN7EREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBeU8VwvVEEO97mFQ2N8PtqD2sJ7Kbc/TIQNL2+U7fEPMFWueAOUeaZzTorGM8JnNVA8MY/K1xp6tjo5W7Zh8Lx9THDR3fYq4tfdajo2SACRodbUXANj1HQ94WjW00kYvG8tA5/NbucDuO8ahRfMibBWVXsKxuQyCGaI5iNHsHwOA3Op08rqwBDDOZTcZRERoREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBYIWUQa80PRa0TnA2KkV8W1Qa9PQsY4uaCC7lfQdbDldbQQLKAiIgIiIP/Z" alt="Rollo de Cable UTP AMP Categoría 6">
+                        </div>
+                        <p class="image-caption">Foto Referencial</p>
+                    </div>
+                    <div class="product-info">
+                        <div class="price-box">
+                            <div class="price-label">Precio:</div>
+                            <div class="price-amount">U$ 187.00</div>
+                            <div class="price-note">por rollo</div>
+                        </div>
+                        <a href="http://www.ds3comunicaciones.com/pedido.html" class="buy-button"><i class="fa-solid fa-cart-shopping"></i> Comprar Ahora</a>
+                        
+                        <h3>Descripción</h3>
+                        <p>Los Cables AMP NetConnect categoría 6 exceden los requerimientos TIA/EIA-568-B.2-1 e ISO / IEC 11801 Clase E. Además cumplen con todos los requisitos de rendimiento para aplicaciones actuales y propuestas, tales como Gigabit Ethernet (1000BASE-TX), 10/100BASE-TX, Token Ring, ATM 155 Mbps, Video ISDN, y voz analógica y digital (VoIP).</p>
+                        <p>Disponibles en colores estándar y empaquetados en un práctico reel-in-box de 1000ft (305m) sin empalmes.</p>
+                        <a href="files/6-1427200-4-DS.pdf" class="download-link"><i class="fa-solid fa-file-pdf"></i> Descargar Ficha Técnica</a>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h3>Especificaciones Técnicas</h3>
+                    <table class="specs-table">
+                        <tbody>
+                            <tr>
+                                <th>Voltaje</th>
+                                <td>300VAC or VDC</td>
+                            </tr>
+                            <tr>
+                                <th>Velocidad Nominal de Propagación</th>
+                                <td>70%</td>
+                            </tr>
+                            <tr>
+                                <th>Temperatura de Operación</th>
+                                <td>-20°C a 60°C</td>
+                            </tr>
+                            <tr>
+                                <th>Temperatura de Almacenamiento</th>
+                                <td>-20°C a 80°C</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <footer class="main-footer">
+        <div class="container">
+            <p>&copy; 2025 DS3 Comunicaciones EIRL. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
